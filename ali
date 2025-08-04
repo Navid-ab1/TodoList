@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Washing the dishes",
+        "creation_date": "2025-07-22 13:35:23.090111",
+        "is_completed": true,
+        "is_pinned": false
+    },
+    {
+        "title": "Going to the English class",
+        "creation_date": "2025-07-22 13:35:23.090117",
+        "is_completed": false,
+        "is_pinned": false
+    }
+]
