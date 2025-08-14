@@ -22,6 +22,14 @@ class Task:
 
 
         return f"{status_icon}-{self.title}"
+    
+    def to_dict(self):
+        return{
+            "title":self.title,
+            "creation_date":self.creation_date.isoformat(),
+            "is_completed":self.is_completed,
+            "is_pinned":self.is_pinned
+        }
 
 
 

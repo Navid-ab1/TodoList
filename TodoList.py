@@ -22,6 +22,7 @@ class TodoList:
 
 
     def complete_task(self,task_number):
+        self.tasks.remove
         task_completed= self.find_task(task_number)
         if task_completed:
             task_completed.mark_as_completed()
@@ -29,25 +30,16 @@ class TodoList:
         
             
                 
-    def  save_tasks_to_file(self, filename):
-        tasks_json=[]
-        for task in self.tasks:
-            data={
-                "title":task.title,
-                "creation_date":str(task.creation_date),
-                "is_completed":task.is_completed,
-                "is_pinned":task.is_pinned
-            }
-            tasks_json.append(data)
-
-        with open(filename,'w',encoding='utf-8') as f:
+    def  save_tasks_to_file(self):
+        tasks_json=[task.to_dict()  for task in self.tasks]
+        with open(self.filename,'w',encoding='utf-8') as f:
             json.dump(tasks_json,f,indent=4,ensure_ascii=False)
         print("Task Is successfully stored")
                     
     def load_tasks_from_file(self):
         with open(self.filename,'r',encoding='utf-8') as f:
             list_load_to_OBJ = json.load(f)
-        print(type(list))
+
         for lis in list_load_to_OBJ:
             new_task=Task(lis['title'])
             new_task.is_completed=lis['is_completed']
